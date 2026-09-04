@@ -1,1 +1,108 @@
+/* ServiceTitan product-UI look, matched from actual tenant screenshots:
+   dark top navigation bar, white content area, blue (#0265DC) for active
+   states and links, clean bordered tables, rounded pill badges. */
 
+:root {
+  --st-navy: #1a1d29;
+  --st-blue: #0265DC;
+  --st-blue-light: #6DBAF8;
+  --st-blue-pill-bg: #e8f0fe;
+  --st-border: #e1e4e8;
+  --st-text: #24292e;
+  --st-text-muted: #57606a;
+
+  --md-primary-fg-color:             var(--st-navy);
+  --md-primary-fg-color--light:      var(--st-navy);
+  --md-primary-fg-color--dark:       var(--st-navy);
+  --md-primary-bg-color:             #FFFFFF;
+  --md-accent-fg-color:              var(--st-blue);
+  --md-accent-fg-color--transparent: #0265DC1A;
+  --md-typeset-a-color:              var(--st-blue);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:             var(--st-navy);
+  --md-primary-fg-color--light:      var(--st-navy);
+  --md-primary-fg-color--dark:       var(--st-navy);
+  --md-accent-fg-color:              var(--st-blue-light);
+  --md-typeset-a-color:              var(--st-blue-light);
+}
+
+/* ---- Top header bar: dark, like the ST app navbar ---- */
+.md-header {
+  background-color: var(--st-navy);
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.md-tabs {
+  background-color: var(--st-navy);
+}
+
+/* ---- Sidebar navigation: white background, blue pill for the active item,
+        uppercase muted-gray section labels — matches the ST app's left nav ---- */
+.md-nav {
+  background-color: #FFFFFF;
+}
+.md-nav__title {
+  color: var(--st-text-muted);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+.md-nav__link {
+  border-radius: 6px;
+  color: var(--st-text);
+}
+.md-nav__link--active,
+.md-nav__link:focus,
+.md-nav__link:hover {
+  background-color: var(--st-blue-pill-bg);
+  color: var(--st-blue);
+}
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link:focus,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  background-color: rgba(109,186,248,0.15);
+  color: var(--st-blue-light);
+}
+
+/* ---- Tables: clean thin borders, muted header row, blue links in cells ---- */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--st-border);
+  border-radius: 6px;
+}
+.md-typeset table:not([class]) th {
+  background-color: #f6f8fa;
+  color: var(--st-text-muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--st-border);
+}
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--st-border);
+}
+.md-typeset table:not([class]) a {
+  color: var(--st-blue);
+}
+
+/* ---- Inline code / badges: rounded, pill-like, matching the app's count badges ---- */
+.md-typeset code {
+  border-radius: 4px;
+  background-color: #f6f8fa;
+}
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: rgba(255,255,255,0.08);
+}
+
+/* ---- Links in body text ---- */
+.md-typeset a {
+  color: var(--st-blue);
+}
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: var(--st-blue-light);
+}
+
+/* ---- Search box in the header: rounded, matching the app's search field ---- */
+.md-search__input {
+  border-radius: 6px;
+}
