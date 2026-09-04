@@ -1,0 +1,172 @@
+/* ServiceTitan product-UI match, from actual tenant screenshots.
+   Covers typography, header, sidebar, page titles, tabs, and tables —
+   not just color. Material for MkDocs sets its own variables scoped to
+   [data-md-color-scheme="..."], which beats a plain :root override, so
+   both light and dark mode overrides use that same scoped selector. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --st-header-bg: #1c1c1e;
+  --st-blue: #0265DC;
+  --st-blue-light: #6DBAF8;
+  --st-blue-pill-bg: #e8f0fe;
+  --st-border: #e5e7eb;
+  --st-text: #1a1a1a;
+  --st-text-muted: #6b7280;
+  --st-badge-bg: #f0f1f3;
+}
+
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+.md-typeset code, .md-typeset pre, .md-typeset kbd {
+  font-family: "Roboto Mono", monospace !important;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:             var(--st-header-bg);
+  --md-primary-fg-color--light:      var(--st-header-bg);
+  --md-primary-fg-color--dark:       var(--st-header-bg);
+  --md-primary-bg-color:             #FFFFFF;
+  --md-accent-fg-color:              var(--st-blue);
+  --md-accent-fg-color--transparent: #0265DC1A;
+  --md-typeset-a-color:              var(--st-blue);
+  --md-default-fg-color:             var(--st-text);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:             var(--st-header-bg);
+  --md-primary-fg-color--light:      var(--st-header-bg);
+  --md-primary-fg-color--dark:       var(--st-header-bg);
+  --md-accent-fg-color:              var(--st-blue-light);
+  --md-typeset-a-color:              var(--st-blue-light);
+}
+
+/* ---- Top header bar: near-black, like the ST app navbar ---- */
+.md-header {
+  background-color: var(--st-header-bg) !important;
+  box-shadow: none;
+}
+.md-tabs {
+  background-color: var(--st-header-bg) !important;
+}
+.md-header__title {
+  font-weight: 700;
+}
+
+/* ---- Sidebar: white bg, bold black section title, small tight-letter-spaced
+        uppercase group labels, blue-pill active item — matches the app's left nav ---- */
+.md-nav {
+  background-color: #FFFFFF;
+  font-size: 0.72rem;
+}
+.md-nav--primary .md-nav__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--st-text);
+  background: transparent;
+  box-shadow: none;
+}
+.md-nav__title {
+  color: var(--st-text-muted);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+.md-nav__link {
+  border-radius: 6px;
+  color: var(--st-text);
+  font-weight: 500;
+}
+.md-nav__link--active,
+.md-nav__link:focus,
+.md-nav__link:hover {
+  background-color: var(--st-blue-pill-bg);
+  color: var(--st-blue) !important;
+  font-weight: 600;
+}
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link:focus,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  background-color: rgba(109,186,248,0.15);
+  color: var(--st-blue-light) !important;
+}
+
+/* ---- Page titles: large, bold, black — matches the app's page headers ---- */
+.md-typeset h1 {
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--st-text);
+  letter-spacing: -0.01em;
+}
+.md-typeset h2 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--st-text);
+}
+.md-typeset h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--st-text);
+}
+
+/* ---- Tables: borderless rows, thin horizontal dividers only, muted gray
+        header text, generous row padding — matches the app's data tables,
+        not a bordered/boxed GitHub-style table ---- */
+.md-typeset table:not([class]) {
+  border: none;
+  border-radius: 0;
+  font-size: 0.82rem;
+}
+.md-typeset table:not([class]) th {
+  background-color: transparent;
+  color: var(--st-text-muted);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--st-border);
+  padding: 0.9em 1em;
+}
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--st-border);
+  padding: 0.9em 1em;
+}
+.md-typeset table:not([class]) tr:hover {
+  background-color: #fafafa;
+}
+.md-typeset table:not([class]) a {
+  color: var(--st-blue);
+}
+
+/* ---- Inline code / badges: rounded pill style, like the app's count badges ---- */
+.md-typeset code {
+  border-radius: 999px;
+  background-color: var(--st-badge-bg);
+  padding: 0.15em 0.6em;
+  font-size: 0.78em;
+}
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: rgba(255,255,255,0.08);
+}
+
+/* ---- Links in body text ---- */
+.md-typeset a {
+  color: var(--st-blue) !important;
+}
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: var(--st-blue-light) !important;
+}
+
+/* ---- Search box in the header: rounded, matching the app's search field ---- */
+.md-search__input {
+  border-radius: 6px;
+}
+
+/* ---- Body text: slightly smaller, tighter line height, like a dense app UI ---- */
+.md-typeset {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
